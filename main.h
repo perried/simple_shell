@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/wait.h>
 
 extern char **environ;
 void getcmd(char **buffer, size_t *bufsize);
