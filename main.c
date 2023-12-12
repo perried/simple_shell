@@ -42,8 +42,6 @@ int main(void)
 			wait(NULL);
 		}
 
-		free(buffer);
-
 	}
 
 	return (0);
