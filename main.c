@@ -12,19 +12,23 @@ int main(void)
 	const char *delim = "\n\t\r";
 	char *token;
 	char *argv[2];
-	char prompt[] = {'>', '>', '>', ' '};
 
-	write(1, &prompt, 4);
-	getline(&buffer, &bufsize, stdin);
+	while (true)
+	{
+		char prompt[] = {'>', '>', '>', ' '};
 
-	token = strtok(buffer, delim);
-	argv[0] = token;
-	argv[1] = NULL;
+		write(1, &prompt, 4);
+		getline(&buffer, &bufsize, stdin);
 
-	if (execve(argv[0], argv, environ) == -1)
-		perror("hsh");
+		token = strtok(buffer, delim);
+		argv[0] = token;
+		argv[1] = NULL;
 
-	free(buffer);
+		if (execve(argv[0], argv, environ) == -1)
+			perror("hsh");
+
+		free(buffer);
+	}
 
 	return (0);
 }
