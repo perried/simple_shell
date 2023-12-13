@@ -2,17 +2,19 @@
 
 /**
  * main - Main function of the program
+ * @argc: argument count
+ * @argv: argument vector
  *
  * Return: returns 0 if successful
  */
-int main(void)
+int main(int argc, char *argv[])
 {
 	pid_t pid;
 	size_t bufsize = 0;
 	char *buffer = NULL;
 	const char *delim = "\n\t\r";
 	char *token;
-	char *argv[2];
+	char *av[2];
 	int status = 0;
 
 	while (1)
@@ -26,15 +28,15 @@ int main(void)
 			break;
 
 		token = strtok(buffer, delim);
-		argv[0] = token;
-		argv[1] = NULL;
+		av[0] = token;
+		av[1] = NULL;
 
 		pid = fork();
 
 		if (pid == 0)
 		{
-			if (execve(argv[0], argv, environ) == -1)
-				perror("hsh");
+			if (execve(av[0], av, environ) == -1)
+				perror(argv[0]);
 
 		}
 		else
