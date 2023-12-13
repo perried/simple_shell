@@ -8,6 +8,5 @@
 #include <sys/wait.h>
 
 extern char **environ;
-void getcmd(char **buffer, size_t *bufsize);
 
 #endif
