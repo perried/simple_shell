@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 		{
 			if (execve(av[0], av, environ) == -1)
 			{
-				perror("hsh");
+				perror(argv[0]);
 			}
 
 		}
