@@ -15,17 +15,15 @@ int main(int argc, char *argv[])
 	const char *delim = "\n\t\r";
 	char *token;
 	char *av[2];
-	int status = 0;
+	int status;
 
 	while (1)
 	{
-		char prompt[] = {'>', '>', '>', ' '};
 
-		write(1, &prompt, 4);
+		write(1, &"#cisfun$ ", 10);
 		status = getline(&buffer, &bufsize, stdin);
-
-		if (status == -1)
-			break;
+		if (status == -1 && status == EOF)
+			return (-1);
 
 		token = strtok(buffer, delim);
 		av[0] = token;
