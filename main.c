@@ -34,7 +34,9 @@ int main(int argc, char *argv[])
 		if (pid == 0)
 		{
 			if (execve(av[0], av, environ) == -1)
+			{
 				perror(argv[0]);
+			}
 
 		}
 		else
@@ -43,6 +45,8 @@ int main(int argc, char *argv[])
 		}
 
 	}
+
+	free(buffer);
 
 	return (0);
 }
