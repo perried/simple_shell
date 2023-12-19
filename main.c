@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 
 		token = strtok(buffer, delim);
 
-		if (token != NULL || token != " ")
+		if (token != "" || token != " ")
 		{
 			av[0] = token;
 			av[1] = NULL;
