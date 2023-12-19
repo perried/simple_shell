@@ -26,14 +26,8 @@ int main(int argc, char *argv[])
 			return (-1);
 
 		token = strtok(buffer, delim);
-
-		if (token != "" || token != " ")
-		{
-			av[0] = token;
-			av[1] = NULL;
-		}
-		else
-			continue;
+		av[0] = token;
+		av[1] = NULL;
 
 		pid = fork();
 
