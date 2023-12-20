@@ -21,6 +21,7 @@ char *get_cmd()
 
 	if (status == -1 || status == EOF)
 	{
+		free(buffer);
 		buffer = NULL;
 	}
 
