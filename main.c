@@ -12,8 +12,7 @@ int main(int argc, char *argv[])
 	size_t bufsize = 0;
 	char *buffer = NULL;
 	const char *delim = "\n\t\r";
-	char *token;
-	char *av[2];
+	char **cmd;
 	ssize_t status;
 
 	(void) argc;
@@ -25,15 +24,13 @@ int main(int argc, char *argv[])
 		if (status == -1 || status == EOF)
 			return (-1);
 
-		token = strtok(buffer, delim);
-		av[0] = token;
-		av[1] = NULL;
+		cmd = parser(buffer, delim);
 
 		pid = fork();
 
 		if (pid == 0)
 		{
-			if (execve(av[0], av, environ) == -1)
+			if (execve(cmd[0], cmd, environ) == -1)
 			{
 				perror(argv[0]);
 			}
@@ -42,9 +39,9 @@ int main(int argc, char *argv[])
 		else
 		{
 			wait(NULL);
+			free(cmd);
 		}
-
-	}
+	}	
 
 	free(buffer);
 
