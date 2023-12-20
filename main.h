@@ -12,6 +12,7 @@
 extern char **environ;
 
 char *get_cmd();
+int check_space(char *str);
 char **parser(char *buffer, const char *delim);
 
 #endif

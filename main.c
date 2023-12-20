@@ -22,6 +22,10 @@ int main(int argc, char *argv[])
 		{
 			break;
 		}
+		else if(check_space(buffer))
+		{
+			continue;
+		}
 
 		cmd = parser(buffer, delim);
 
