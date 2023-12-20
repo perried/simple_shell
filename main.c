@@ -20,7 +20,6 @@ int main(int argc, char *argv[])
 
 		if (buffer == NULL)
 		{
-			free(buffer);
 			break;
 		}
 
@@ -32,6 +31,7 @@ int main(int argc, char *argv[])
 		{
 			if (execve(cmd[0], cmd, environ) == -1)
 			{
+				free(cmd);
 				perror(argv[0]);
 			}
 
@@ -39,6 +39,7 @@ int main(int argc, char *argv[])
 		else
 		{
 			wait(NULL);
+			free(buffer);
 			free(cmd);
 		}
 	}	
