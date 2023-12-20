@@ -19,7 +19,10 @@ int main(int argc, char *argv[])
 		buffer = get_cmd();
 
 		if (buffer == NULL)
+		{
+			free(buffer);
 			break;
+		}
 
 		cmd = parser(buffer, delim);
 
