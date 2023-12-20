@@ -7,9 +7,11 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#define BUFSIZE 1000
 
 extern char **environ;
 
+char *get_cmd();
 char **parser(char *buffer, const char *delim);
 
 #endif
